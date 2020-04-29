@@ -266,8 +266,48 @@ struct Release {
     90: optional DocumentState documentState,
 
     200: optional map<RequestedAction, bool> permissions,
+
+    // List Mandatory fields for Release
+    201: optional string fileName,
+    202: optional string spdxId,
+    203: optional string fileChecksum,
+    204: optional string licenseConcluded,
+    205: optional string licenseInfoInFile,
+    206: optional string fileCopyrightText,
+    207: optional string snippetSPDXID,
+    208: optional string snippetFromFileSPDXID,
+    209: optional string snippetByteRange,
+    210: optional string snippetLicenseConcluded,
+    211: optional string snippetCopyrightText,
+
+    // List Mandatory for Spdx fields for component
+    212: optional string spdxVersion,
+    213: optional string dataLicense,
+    214: optional string documentName,
+    215: optional string documentNamespace,
+    217: optional string created,
+    218: optional string packageVerificationCode,
+    219: optional string packageLicenseConcluded,
+    220: optional string packageLicenseDeclared,
+    221: optional string packageCopyrightText,
+    222: optional string packageVersion,
+    223: optional string packageFileName,
+    224: optional string filesAnalyzed,
+    225: optional string packageLicenseComments,
+    226: optional string packageDownloadLocation,
+    227: optional string modificationRecord,
+    228: optional string compileOptions,
+    229: optional list<PackageCommentExtend> packageCommentExtends,
+    230: optional string packageSpdxId,
+    231: optional set<string> creators,
+    232: optional string packageHomePage,
+    233: optional set<string> licenseIds,
 }
 
+struct PackageCommentExtend {
+    1: optional string key,
+    2: optional string value,
+}
 enum ComponentType {
     INTERNAL = 0, //internal software closed source
     OSS = 1,      //open source software
@@ -314,6 +354,7 @@ struct Component {
 
     36: optional Vendor defaultVendor,
     37: optional string defaultVendorId,
+    38: optional set<string> licenseIds,
 
     // List of keywords
     40: optional set<string> categories,
@@ -334,6 +375,7 @@ struct Component {
     70: optional DocumentState documentState,
 
     200: optional map<RequestedAction, bool> permissions,
+    201: optional string packageLicenseConcluded
 }
 
 struct ReleaseLink{

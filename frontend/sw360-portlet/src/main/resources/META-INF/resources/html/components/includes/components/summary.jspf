@@ -97,7 +97,7 @@
     <tr>
         <td>Main licenses: </td>
         <td>
-            <sw360:DisplayLicenseCollection licenseIds="${component.mainLicenseIds}" scopeGroupId="${pageContext.getAttribute('scopeGroupId')}"/>
+            <sw360:out value="${component.packageLicenseConcluded}"/>
         </td>
     </tr>
 </table>

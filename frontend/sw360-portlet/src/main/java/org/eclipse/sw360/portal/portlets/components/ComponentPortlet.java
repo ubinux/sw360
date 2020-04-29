@@ -1568,9 +1568,18 @@ public class ComponentPortlet extends FossologyAwarePortlet {
                 Release release;
                 String releaseId = request.getParameter(RELEASE_ID);
                 if (releaseId != null) {
+                    // Update component info
+                    Component componentEdit = client.getComponentByIdForEdit(id, user);
+                    ComponentPortletUtils.updateComponentFromRequest(request, componentEdit);
+                    String ModerationRequestCommentMsg = request.getParameter(MODERATION_REQUEST_COMMENT);
+                    user.setCommentMadeDuringModerationRequest(ModerationRequestCommentMsg);
+                    RequestStatus requestStatus = client.updateComponent(componentEdit, user);
+                    setSessionMessage(request, requestStatus, "Component", "update", componentEdit.getName());
+                    cleanUploadHistory(user.getEmail(),id);
+
                     release = client.getReleaseByIdForEdit(releaseId, user);
                     ComponentPortletUtils.updateReleaseFromRequest(request, release);
-                    String ModerationRequestCommentMsg = request.getParameter(MODERATION_REQUEST_COMMENT);
+                    ModerationRequestCommentMsg = request.getParameter(MODERATION_REQUEST_COMMENT);
                     user.setCommentMadeDuringModerationRequest(ModerationRequestCommentMsg);
 
                     String cyclicLinkedReleasePath = client.getCyclicLinkedReleasePath(release, user);
@@ -1584,7 +1593,7 @@ public class ComponentPortlet extends FossologyAwarePortlet {
                         return;
                     }
 
-                    RequestStatus requestStatus = client.updateRelease(release, user);
+                    requestStatus = client.updateRelease(release, user);
                     setSessionMessage(request, requestStatus, "Release", "update", printName(release));
                     if (RequestStatus.DUPLICATE.equals(requestStatus) || RequestStatus.DUPLICATE_ATTACHMENT.equals(requestStatus)) {
                         if(RequestStatus.DUPLICATE.equals(requestStatus))
@@ -1854,6 +1863,7 @@ public class ComponentPortlet extends FossologyAwarePortlet {
             jsonObject.put("cType", nullToEmptyString(comp.getComponentType()));
             jsonObject.put("lRelsSize", String.valueOf(comp.getReleaseIdsSize()));
             jsonObject.put("attsSize", String.valueOf(comp.getAttachmentsSize()));
+            jsonObject.put("packageLicenseConcluded", nullToEmptyString(comp.getPackageLicenseConcluded()));
 
             JSONArray vendorArray = createJSONArray();
             Set<String> vendorNames = new HashSet<>();

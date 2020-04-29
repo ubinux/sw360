@@ -84,6 +84,8 @@ public abstract class ComponentPortletUtils {
                 case ADDITIONAL_DATA:
                     release.setAdditionalData(PortletUtils.getAdditionalDataMapFromRequest(request));
                     break;
+                case PACKAGE_COMMENT_EXTENDS:
+                    release.setPackageCommentExtends(PortletUtils.getPackageCommentExtendFromRequest(request));
                 default:
                     setFieldValue(request, release, field);
             }

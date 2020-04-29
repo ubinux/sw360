@@ -224,7 +224,7 @@
                 let columns = [
                     {"title": "Vendor", data: "vndrs"},
                     {"title": "Component Name", data: "name", render: {display: renderComponentNameLink}},
-                    {"title": "Main Licenses", data: "lics", render: {display: renderLicenseLink}},
+                    {"title": "Main Licenses", data: "packageLicenseConcluded"},
                     {"title": "Component Type", data: "cType"},
                     {"title": "Actions", data: "id", render: {display: renderComponentActions}, className: 'two actions', orderable: false }
                 ];

@@ -78,6 +78,9 @@ public class ReleaseModerationRequestGenerator extends ModerationRequestGenerato
                     case ADDITIONAL_DATA:
                         dealWithStringKeyedMap(Release._Fields.ADDITIONAL_DATA);
                         break;
+                    case PACKAGE_COMMENT_EXTENDS:
+                        dealWithStringtoStringMap(Release._Fields.PACKAGE_COMMENT_EXTENDS);
+                        break;
                     default:
                         dealWithBaseTypes(field, Release.metaDataMap.get(field));
                 }

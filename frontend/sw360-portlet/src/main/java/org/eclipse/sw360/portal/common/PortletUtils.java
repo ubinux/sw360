@@ -361,7 +361,47 @@ public class PortletUtils {
         }
         return customMap;
     }
+    public static Map<String,String> getCustomMapFromRequestPackage(PortletRequest request, String mapKey, String mapValue) {
+        Map<String,String> customMap = new LinkedHashMap<>();
+        Enumeration<String> parameterNames = request.getParameterNames();
+	List<String> keyAndValueParameterIds = Collections.list(parameterNames);
+	Collections.sort(keyAndValueParameterIds);
+        for (int i = 0; i < keyAndValueParameterIds.size(); i++){
+            keyAndValueParameterIds.set(i,keyAndValueParameterIds.get(i).replace(mapKey,""));
+        }
+        for(String parameterId : keyAndValueParameterIds) {
+            String key = request.getParameter(mapKey + parameterId);
+            if(isNullEmptyOrWhitespace(key)){
+                LOGGER.error("Empty map key found");
+            } else {
+                String value = request.getParameter(mapValue + parameterId);
+                if(!customMap.containsKey(key)){
+                    customMap.put(key, value);
+                }
+            }
+        }
+        return customMap;
+    }
 
+
+    public static List<PackageCommentExtend> getPackageCommentExtendFromRequest(PortletRequest request) {
+
+        Map<String,String> mapData = getCustomMapFromRequestPackage(request, PortalConstants.PACKAGE_COMMENT_EXTEND_KEY, PortalConstants.PACKAGE_COMMENT_EXTEND_VALUE);
+        List<String> result = new ArrayList(mapData.keySet());
+        List<String> result2 = new ArrayList(mapData.values());
+        PackageCommentExtend packageComment = new PackageCommentExtend();
+        List<PackageCommentExtend> listPackage = new LinkedList<>();
+        for(int i = 0; i < result.size(); i++) {
+            LOGGER.error(result.get(i));
+            LOGGER.error(result2.get(i));
+            packageComment.setKey( result.get(i));
+            packageComment.setValue(result2.get(i));
+	    listPackage.add(packageComment);
+            packageComment = new PackageCommentExtend();
+        }
+
+        return listPackage;
+    }
     public static Map<String,String> getMapFromRequest(PortletRequest request, String key, String value) {
         Map<String, Set<String>> customMap = getCustomMapFromRequest(request, key, value);
         return customMap.entrySet().stream()

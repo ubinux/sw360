@@ -106,6 +106,17 @@
             </div>
         </td>
     </tr>
+    <tr>
+        <td>
+            <div class="form-group">
+                <label for="mainLicenses">Main licenses</label>
+                <input class="form-control" id="mainLicenses" name="<portlet:namespace/><%=Component._Fields.PACKAGE_LICENSE_CONCLUDED%>" type="text"
+                        placeholder="Enter Main Licenses" value="<sw360:out value="${component.packageLicenseConcluded}"/>"/>
+            </div>
+        </td>
+        <td width="33%"></td>
+        <td width="33%"></td>
+    </tr>
 </table>
 
 <table class="table edit-table three-columns" id="RolesData">

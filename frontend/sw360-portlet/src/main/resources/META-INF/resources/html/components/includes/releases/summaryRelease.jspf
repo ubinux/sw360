@@ -102,4 +102,73 @@
         </table>
     </core_rt:if>
 
+    <table class="table info_table" id="releaseSpdxFields">
+        <thead>
+        <tr>
+            <th colspan="2">Spdx Fields</th>
+        </tr>
+        </thead>
+        <tr>
+            <td>SPDX Version: </td>
+            <td><sw360:out value="${release.spdxVersion}"/></td>
+        </tr>
+        <tr>
+            <td>Package Version:</td>
+            <td><sw360:out value="${release.packageVersion}"/></td>
+        </tr>
+        <tr>
+            <td>Data License:</td>
+            <td><sw360:out value="${release.dataLicense}"/></td>
+        </tr>
+        <tr>
+            <td>SPDXID:</td>
+            <td><sw360:out value="${release.spdxId}"/></td>
+        </tr>
+        <tr>
+            <td>Document Name:</td>
+            <td><sw360:out value="${release.documentName}"/></td>
+        </tr>
+        <tr>
+            <td>Document Namespace:</td>
+            <td><sw360:out value="${release.documentNamespace}"/></td>
+        </tr>
+        <tr>
+            <td>Creator:</td>
+            <td><sw360:DisplayCollection value="${release.creators}"/></td>
+        </tr>
+        <tr>
+            <td>Created:</td>
+            <td><sw360:out value="${release.created}"/></td>
+        </tr>
+        <tr>
+            <td>Package Verification Code:</td>
+            <td><sw360:out value="${release.packageVerificationCode}"/></td>
+        </tr>
+        <tr>
+            <td>Package License Concluded:</td>
+            <td><sw360:out value="${release.packageLicenseConcluded}"/></td>
+        </tr>
+        <tr>
+            <td>Package License Declared:</td>
+            <td><sw360:out value="${release.packageLicenseDeclared}"/></td>
+        </tr>
+        <tr>
+            <td>Package Copyright Text:</td>
+            <td><sw360:out value="${release.packageCopyrightText}"/></td>
+        </tr>
+        <tr>
+            <td>PackageComment:: ModificationRecord:</td>
+            <td><sw360:out value="${release.modificationRecord}"/></td>
+        </tr>
+        <tr>
+            <td>PackageComment:: CompileOptions:</td>
+            <td><sw360:out value="${release.compileOptions}"/></td>
+        </tr>
+        <core_rt:forEach items="${release.packageCommentExtends}" var="tableEntry" varStatus="loop">
+            <tr>
+                <td>PackageComment:: <sw360:out value="${tableEntry.key}"/>:</td>
+                <td><sw360:out value="${tableEntry.value}"/></td>
+            </tr>
+        </core_rt:forEach>
+    </table>
 </core_rt:if>

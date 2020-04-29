@@ -329,6 +329,32 @@ class JacksonCustomizations {
                 "setRoles",
                 "additionalDataSize",
                 "setAdditionalData",
+                "setSpdxVersion",
+                "setDataLicense",
+                "setSpdxId",
+                "setDocumentName",
+                "setDocumentNamespace",
+                "setCreated",
+                "setPackageVerificationCode",
+                "setPackageLicenseConcluded",
+                "setPackageLicenseDeclared",
+                "setPackageCopyrightText",
+                "setPackageVersion",
+                "setPackageFileName",
+                "setFilesAnalyzed",
+                "setPackageLicenseComments",
+                "setPackageDownloadLocation",
+                "setLicenseIds",
+                "licenseIdsSize",
+                "licenseIdsIterator",
+                "setModificationRecord",
+                "setCompileOptions",
+                "creatorsSize",
+                "creatorsIterator",
+                "setCreators",
+                "packageCommentExtendsSize",
+                "setPackageCommentExtends",
+                "setPackageSpdxId"
         })
         static abstract class ComponentMixin extends Component {
             @Override
@@ -402,6 +428,7 @@ class JacksonCustomizations {
                 "softwarePlatformsIterator",
                 "additionalDataSize",
                 "setAdditionalData",
+                "setFileName",
         })
         static abstract class ReleaseMixin extends Release {
             @Override
@@ -432,7 +459,21 @@ class JacksonCustomizations {
                 "setCheckedBy",
                 "setCheckedTeam",
                 "setCheckedOn",
-                "setCheckStatus"
+                "setCheckStatus",
+                "setSpdxVersion",
+                "setDataLicense",
+                "setDocumentName",
+                "setDocumentNamespace",
+                "setCreated",
+                "setPackageVerificationCode",
+                "setPackageLicenseConcluded",
+                "setPackageLicenseDeclared",
+                "setPackageCopyrightText",
+                "setPackageVersion",
+                "setPackageFileName",
+                "setFilesAnalyzed",
+                "setPackageLicenseComments",
+                "setPackageDownloadLocation"
         })
         static abstract class AttachmentMixin {
         }

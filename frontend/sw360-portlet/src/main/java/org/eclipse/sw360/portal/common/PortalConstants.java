@@ -477,6 +477,8 @@ public class PortalConstants {
     public static final String EXTERNAL_ID_VALUE = "externalIdValue";
     public static final String ADDITIONAL_DATA_KEY = "additionalDataKey";
     public static final String ADDITIONAL_DATA_VALUE = "additionalDataValue";
+    public static final String PACKAGE_COMMENT_EXTEND_KEY = "packageCommentExtendKey";
+    public static final String PACKAGE_COMMENT_EXTEND_VALUE = "packageCommentExtendValue";
 
     //! request status
     public static final String REQUEST_STATUS = "request_status";
