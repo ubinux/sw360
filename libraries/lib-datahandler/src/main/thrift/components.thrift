@@ -301,7 +301,7 @@ struct Release {
     230: optional string packageSpdxId,
     231: optional set<string> creators,
     232: optional string packageHomePage,
-    233: optional set<string> licenseIds,
+    233: optional list<string> licenseIds,
 }
 
 struct PackageCommentExtend {
